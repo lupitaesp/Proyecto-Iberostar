@@ -1,0 +1,25 @@
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            This is a danger alert*check it out!
+        </div>
+    {% endif%}
+    <h1> Registro de Assets</h1>
+    <form action="{% url 'guardarAsset' %}" method="POST">
+        {% csrf_token %}
+        {% if mensaje %}
+            <div class="alert alert-sucess" role="alert">
+                Asset registrado existosamente
+            </div>
+        {% endif %}
+
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+
+    </form> 
+ 
+{% endblock %}

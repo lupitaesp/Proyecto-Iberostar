@@ -1,33 +1,36 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
-<title> IBEROSTAR </title>
-{% load static %}
-   <link type="text/css" href="{% static 'proyectowebapp/css/index.css'%}" rel="stylesheet"></link>
-   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-   <link rel="icon" href="{% static 'proyectowebapp/img/icon.png'%}">
+  <title> IBEROSTAR </title>
+  {% load static %}
+  <link type="text/css" href="{% static 'proyectowebapp/css/index.css'%}" rel="stylesheet">
+  </link>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <link rel="icon" href="{% static 'proyectowebapp/img/icon.png'%}">
 </head>
+
 <body>
-<div id="login-button">
+  <div id="login-button">
     <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
     </img>
-</div>
-<div id="container">
-</br>
-  <h1>Log In</h1>
-</br>
-  <form action="conexion.php" method="post">
-   <input type="usuario" name="user" placeholder="Usuario">
-  
-   <input type="password" name="pass" placeholder="Password">
-  </br>
-</br>
-    <a href="{% url 'Home'%}" type="submit">ENTRAR</a>  
-  </form>
-</div>
-<script type="text/javascript" src="{% static 'proyectowebapp/js/index.js'%}"></script>
+  </div>
+  <div id="container">
+    </br>
+    <h1>Log In</h1>
+    </br>
+    <form action="conexion.php" method="post">
+      <input type="usuario" name="user" placeholder="Usuario">
+
+      <input type="password" name="pass" placeholder="Password">
+      </br>
+      </br>
+      <a href="{% url 'Home'%}" type="submit">ENTRAR</a>
+    </form>
+  </div>
+  <script type="text/javascript" src="{% static 'proyectowebapp/js/index.js'%}"></script>
 </body>
 <div id="container">
 </div>
+
 </html>
