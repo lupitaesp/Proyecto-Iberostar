@@ -1,30 +1,98 @@
-{% extends 'proyectowebapp/home.html' %}
-{% load static %}
 
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>IBEROSTAR</title>
+  <link rel="icon" href="{% static 'proyectowebapp/img/icon.png'%}">
+
+  <!-- Custom fonts for this template-->
+  <link rel="icon" href="{% static 'imagenes/icon.png' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"
+    type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{%  static 'proyectowebapp/css/home.css' %}" rel="stylesheet">
+
+</head>
 
 <body id="page-top">
 
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <hr class="divider my-2">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <div class="sidebar-brand-icon">
+          <i class="fas"></i>
+          <img src="{% static 'proyectowebapp/img/logo.png' %}" style="width:100%">
+        </div>
+
+      </a>
+
+      <!-- Divider -->
+      <hr class="divider my-3">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <div class="sidebar-brand-text mx-3">GESTION INVENTARIO</div>
+      </a>
+
+      <!-- Nav Item - Dashboard -->
+      <hr class="divider my-3">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'Home' %}">
+          <span>ASSETS</span></a>
+      </li>
+
+      </li>
+
+      <!-- Divider -->
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+      <!-- Nav Item - Logout -->
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'Bodega' %}">
+          <span>BODEGA</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+    </ul>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
+      <!-- Main Content -->
       <!-- CARD DE DISPOSITIVOS -->
-      </br>
-      </br>
-      <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold text-primary">REGISTRO DE DISPOSITIVOS</h6>
-          <a href="{% url 'registrarAsset' %}" >AGREGAR</a>
-        </div>
-        
+    </br>
+  </br>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">REGISTRO DE DISPOSITIVOS</h6>
+      <a href="{% url 'registrarAsset' %}"><button type="button" class="btn btn-primary" >AGREGAR</button></a>
+     
+    </div>
 
-        <!-- End of Content Wrapper -->
 
-      </div>
+
+ </div>
       <!-- End of Page Wrapper -->
-
-
 </body>
 
 </html>
