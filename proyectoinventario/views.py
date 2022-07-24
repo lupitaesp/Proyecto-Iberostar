@@ -11,6 +11,7 @@ def home(request):
 def bodega(request):
     return render(request,"proyectowebapp/bodega.html")
 
+
 class FormAssetsView(HttpRequest):
 
     def inde(request):
