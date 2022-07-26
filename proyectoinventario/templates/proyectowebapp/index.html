@@ -19,14 +19,15 @@
     </br>
     <h1>Log In</h1>
     </br>
-    <form action="conexion.php" method="post">
-      <input type="usuario" name="user" placeholder="Usuario">
-
-      <input type="password" name="pass" placeholder="Password">
-      </br>
-      </br>
-      <a href="{% url 'Home'%}" type="submit">ENTRAR</a>
+    {% load crispy_forms_tags %}
+    {% block content %}
+    <form method="post" action="" style="color: white;">
+      {% csrf_token %}
+      {{form|crispy}}
+      <button type="submit">ENTRAR</button>
+      
     </form>
+    {% endblock %}
   </div>
   <script type="text/javascript" src="{% static 'proyectowebapp/js/index.js'%}"></script>
 </body>

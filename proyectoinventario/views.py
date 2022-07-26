@@ -1,9 +1,26 @@
+from pyexpat.errors import messages
 from django.http import HttpRequest
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from proyectoinventario.forms import FormAssets
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,logout,authenticate
 
-def login(request):
-    return render(request,"proyectowebapp/index.html")
+def logi(request):
+    if request.method=="POST":
+        form=AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            nombre_usuario= form.cleaned_data.get("username")
+            contra=form.cleaned_data.get("password")
+            usuario=authenticate(username=nombre_usuario, password=contra)
+            if usuario is not None:
+                login(request, usuario)
+                return redirect('Home')
+            else:
+                messages.error(request,"Usuario no valido")
+        else: 
+            messages.error(request,"Informacion incorrecta")
+    form=AuthenticationForm()
+    return render(request,"proyectowebapp/index.html", {"form":form})
 
 def home(request):
     return render(request,"proyectowebapp/home.html")

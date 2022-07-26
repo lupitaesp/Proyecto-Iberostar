@@ -3,7 +3,7 @@ from proyectoinventario import views
 
 
 urlpatterns = [
-    path('',views.login,name="Log in"),
+    path('',views.logi,name="Login"),
     path('home',views.home,name="Home"),
     path('bodega',views.bodega,name="Bodega"),
    # path('dispositivos',views.dispositivos,name="Dispositivos"),
