@@ -413,7 +413,9 @@ h3 {
 
 .h4,
 h4 {
-    font-size: 1.5rem
+    font-size: 1.5rem;
+    text-align:center;  
+    font-weight: bolder;
 }
 
 .h5,
@@ -586,7 +588,8 @@ pre code {
     padding-right: .75rem;
     padding-left: .75rem;
     margin-right: auto;
-    margin-left: auto
+    margin-left: auto;
+    color: black;
 }
 
 @media (min-width:576px) {
@@ -2563,9 +2566,11 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
+    margin: 20px;
     color: #fff;
     background-color: #4e73df;
-    border-color: #4e73df
+    border-color: #4e73df;
+    justify-content: center;
 }
 
 .btn-primary:hover {
@@ -12239,3 +12244,7 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
 }
+
+.asteriskField {
+    display: none;
+    }

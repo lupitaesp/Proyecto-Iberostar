@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Assets(models.Model):
+    
     modelo=models.CharField(max_length=30)
     serie=models.CharField(max_length=30)
     marca=models.CharField(max_length=30)
