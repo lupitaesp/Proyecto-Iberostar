@@ -23,11 +23,19 @@
     {% block content %}
     <form method="post" action="" style="color: white;">
       {% csrf_token %}
-      {{form|crispy}}
-      <button type="submit">ENTRAR</button>
-      
-    </form>
-    {% endblock %}
+      <!-- MENSAJES DE ERROR EN EL LOGIN -->
+      {% if messages %}
+      {% for mensaje in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{mensaje}}
+      </div>
+  {% endfor%}
+  {% endif %}
+  {{form|crispy}}
+  <button type="submit">ENTRAR</button>
+
+  </form>
+  {% endblock %}
   </div>
   <script type="text/javascript" src="{% static 'proyectowebapp/js/index.js'%}"></script>
 </body>

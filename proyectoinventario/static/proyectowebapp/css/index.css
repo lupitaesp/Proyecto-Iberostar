@@ -24,8 +24,8 @@ img {
   right: 0;
   bottom: 0;
   margin: auto;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   border-radius: 5px;
   background: rgba(87, 167, 199, 0.829);
   box-shadow: 1px 1px 50px rgb(12, 3, 37);
@@ -232,5 +232,34 @@ a:hover {
   font-weight: bold;
   text-align: center;
   font-family: 'Open Sans Condensed', sans-serif;
-  padding: 10px 40px;
+  padding: 10px 50px;
+}
+
+.alert {
+  --bs-alert-bg: transparent;
+  --bs-alert-padding-x: 20px;
+  --bs-alert-padding-y: 50px;
+  --bs-alert-margin-bottom: 1rem;
+  --bs-alert-color: inherit;
+  --bs-alert-border-color: transparent;
+  --bs-alert-border: 1px solid var(--bs-alert-border-color);
+  --bs-alert-border-radius: .375rem; 
+  margin-bottom: var(--bs-alert-margin-bottom);
+  color: var(--bs-alert-color);
+  background-color: var(--bs-alert-bg);
+  border: var(--bs-alert-border);
+  border-radius: var(--bs-alert-border-radius);
+  width: 150px;
+  height: 10px;
+  padding: 10px 50px;
+  margin: 9px auto;
+ 
+  
+}
+
+.alert-danger {
+  padding: 10px 50px;
+  --bs-alert-color: hsl(355, 61%, 32%);
+  --bs-alert-bg: #f8d7da;
+  --bs-alert-border-color: #f5c2c7
 }
