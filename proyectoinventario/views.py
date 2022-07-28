@@ -27,6 +27,9 @@ def home(request):
 def bodega(request):
     return render(request,"proyectowebapp/bodega.html")
 
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('Login')
 
 class FormAssetsView(HttpRequest):
 

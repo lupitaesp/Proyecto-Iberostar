@@ -68,21 +68,23 @@
       </li>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Logout -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
-          {% if user.is_authenticated %}
-          Hola {{ user.username }}
-          {% else %}
-          No autenticado
-          {% endif %}
-        </a>
-      </li>
+    
+      
+ 
+         
+   
 
     </ul>
     <!-- End of Sidebar -->
 
+    <div style="text-align: rigth; margin-right: 100px; color: blue">
+      {% if user.is_authenticated %}
+      Hola {{ user.username }} &nbsp;&nbsp;<a href="{% url 'cerrar_sesion' %}" style="color: blue;">Cerra Sesion</a>
+      {% else %}
+      No autenticado
+      {% endif %}
+    
+    </div>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
