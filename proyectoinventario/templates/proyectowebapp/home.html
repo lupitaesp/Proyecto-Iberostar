@@ -29,66 +29,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <hr class="divider my-2">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-icon">
-          <i class="fas"></i>
-          <img src="{% static 'proyectowebapp/img/logo.png' %}" style="width:100%">
-        </div>
-
-      </a>
-
-      <!-- Divider -->
-      <hr class="divider my-3">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-text mx-3">GESTION INVENTARIO</div>
-      </a>
-
-      <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Profile -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-user"></i>
-          <span>{{ user.username }}</span></a>
-      </li>
-
-      <!-- Nav Item - Dashboard -->
-
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'Home' %}">
-          <i class="fas fa-fw fa-desktop"></i>
-          <span>ASSETS</span></a>
-      </li>
-
-
-      <li class="nav-item active" >
-        <a class="nav-link" href="{% url 'Bodega' %}">
-          <i class="fas fa-fw fa-archive"></i>
-          <span>BODEGA</span></a>
-      </li>
-
-
-      <!-- Nav Item - Logout -->
-      <li class="nav-item active">
-        {% if user.is_authenticated %}
-        <a class="nav-link" href="{% url 'cerrar_sesion' %}">
-        {% else %}
-        No autenticado
-        {% endif %}
-          <i class="fas fa-fw fa-sign-out-alt"></i>
-          <span>LOGOUT</span></a>
-      </li>
-
-
-
-
-
-    </ul>
-    <!-- Cerrar Sesion -->
-
+   
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
