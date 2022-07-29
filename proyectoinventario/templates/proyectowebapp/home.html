@@ -47,44 +47,49 @@
         <div class="sidebar-brand-text mx-3">GESTION INVENTARIO</div>
       </a>
 
+      <hr class="sidebar-divider my-0">
+      <!-- Nav Item - Profile -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-user"></i>
+          <span>{{ user.username }}</span></a>
+      </li>
+
       <!-- Nav Item - Dashboard -->
-      <hr class="divider my-3">
+
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'Home' %}">
+          <i class="fas fa-fw fa-desktop"></i>
           <span>ASSETS</span></a>
       </li>
 
-      </li>
 
-      <!-- Divider -->
-
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Logout -->
-      <li class="nav-item active">
+      <li class="nav-item active" >
         <a class="nav-link" href="{% url 'Bodega' %}">
+          <i class="fas fa-fw fa-archive"></i>
           <span>BODEGA</span></a>
       </li>
 
-      <!-- Divider -->
-    
-      
- 
-         
-   
+
+      <!-- Nav Item - Logout -->
+      <li class="nav-item active">
+        {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'cerrar_sesion' %}">
+        {% else %}
+        No autenticado
+        {% endif %}
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>LOGOUT</span></a>
+      </li>
+
+
+
+
 
     </ul>
-    <!-- End of Sidebar -->
+    <!-- Cerrar Sesion -->
 
-    <div style="text-align: rigth; margin-right: 100px; color: blue">
-      {% if user.is_authenticated %}
-      Hola {{ user.username }} &nbsp;&nbsp;<a href="{% url 'cerrar_sesion' %}" style="color: blue;">Cerra Sesion</a>
-      {% else %}
-      No autenticado
-      {% endif %}
-    
-    </div>
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -95,7 +100,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-        
+
           <!-- Main Content Here -->
 
           <!-- End of Main Content -->

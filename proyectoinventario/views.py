@@ -4,6 +4,7 @@ from proyectoinventario.forms import FormAssets
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
+
 def logi(request):
     if request.method=="POST":
         form=AuthenticationForm(request, data=request.POST)
