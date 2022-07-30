@@ -4,6 +4,7 @@ from proyectoinventario.forms import FormAssets
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
+from django.views.generic import ListView
 
 from proyectoinventario.models import Assets
 
@@ -28,14 +29,13 @@ def home(request):
     return render(request,"proyectowebapp/home.html")
 
 def bodega(request):
-    return render(request,"proyectowebapp/bodega.html")
+    bode = Assets.objects.all()
+    return render(request,"proyectowebapp/bodega.html", {'bode': bode})
 
 def cerrar_sesion(request):
     logout(request)
     return redirect('Login')
 
-def assetsbodega(request):
-    stock = Assets.objects.filter(accion='')
 
 class FormAssetsView(HttpRequest):
 
