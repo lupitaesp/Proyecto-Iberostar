@@ -5,6 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 
+from proyectoinventario.models import Assets
+
 def logi(request):
     if request.method=="POST":
         form=AuthenticationForm(request, data=request.POST)
@@ -31,6 +33,9 @@ def bodega(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect('Login')
+
+def assetsbodega(request):
+    stock = Assets.objects.filter(accion='')
 
 class FormAssetsView(HttpRequest):
 

@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Assets(models.Model):
-    
+    id = models.AutoField(primary_key=True)
     modelo=models.CharField(max_length=30)
     serie=models.CharField(max_length=30)
     marca=models.CharField(max_length=30)
