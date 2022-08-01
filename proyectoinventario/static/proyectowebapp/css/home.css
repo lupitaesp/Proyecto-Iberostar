@@ -414,7 +414,7 @@ h3 {
 .h4,
 h4 {
     font-size: 1.5rem;
-    text-align:center;  
+    text-align: center;
     font-weight: bolder;
 }
 
@@ -12247,6 +12247,30 @@ body.sidebar-toggled footer.sticky-footer {
 
 .asteriskField {
     display: none;
-    }
+}
 
 
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    color: #000;
+}
+
+caption {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    color: #858796;
+    text-align: left;
+    caption-side: bottom
+}
+
+th {
+    text-align: center;
+    color: #000;
+
+}
+
+label {
+    display: inline-block;
+}
