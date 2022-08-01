@@ -28,8 +28,9 @@ def logi(request):
 def home(request):
     return render(request,"proyectowebapp/home.html")
 
+#Filtra en bodega todas las entradas.
 def bodega(request):
-    bode = Assets.objects.all()
+    bode = Assets.objects.all().filter(accion=1)
     return render(request,"proyectowebapp/bodega.html", {'bode': bode})
 
 def cerrar_sesion(request):
