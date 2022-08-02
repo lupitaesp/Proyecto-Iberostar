@@ -41,7 +41,7 @@ def eliminarAssets(request, id):
     bodes=Assets.objects.get(id=id)
     bodes.delete()
     bode = Assets.objects.all().filter(accion=1)
-    return render(request,"proyectowebapp/bodega.html", {'bode': bode})
+    return render(request,"proyectowebapp/bodega.html", {'bode': bode, "mensaje": 'OK'})
 
 class FormAssetsView(HttpRequest):
 
