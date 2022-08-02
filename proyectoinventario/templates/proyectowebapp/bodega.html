@@ -113,6 +113,7 @@
                 <th>Estado</th>
                 <th>Fecha</th>
                 <th>Cantidad</th>
+                <th>Eliminar</th>
               </tr>
             </thead>
             <tbody>
@@ -127,6 +128,9 @@
                 <td>{{c.estado}}</td>
                 <td>{{c.fecha}}</td>
                 <td>{{c.cantidad}}</td>
+                <td>
+                  <a href="{% url 'eliminarAsset' c.id  %}" class="btn btn-danger btnEliminacion">Eliminar</a>
+                </td>
               </tr>
               {% endfor %}
 

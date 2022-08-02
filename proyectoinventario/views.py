@@ -37,6 +37,11 @@ def cerrar_sesion(request):
     logout(request)
     return redirect('Login')
 
+def eliminarAssets(request, id):
+    bodes=Assets.objects.get(id=id)
+    bodes.delete()
+    bode = Assets.objects.all().filter(accion=1)
+    return render(request,"proyectowebapp/bodega.html", {'bode': bode})
 
 class FormAssetsView(HttpRequest):
 
