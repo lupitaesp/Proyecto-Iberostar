@@ -35,9 +35,12 @@ class FormAssets(forms.ModelForm):
          initial = '1',
          widget = forms.RadioSelect,
      )
+    
+    #AGREGRA AÑO DE GARANTIA 
+
+    
     class Meta:
         model= Assets
         fields = ['modelo','serie','marca','cantidad','tipo','categoria','estado','accion']
-        wigets = {'fecha':forms.DateInput(attrs={'type':'date'})}
-
+        wigets = {'fecha':forms.DateTimeInput(format='%d/%m/%Y', attrs={'type': 'datetime'})}
 
