@@ -4,7 +4,6 @@ from proyectoinventario.forms import FormAssets
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
-from django.views.generic import ListView
 
 from proyectoinventario.models import Assets
 
@@ -41,18 +40,22 @@ def eliminarAssets(request, id):
     bodes=Assets.objects.get(id=id)
     bodes.delete()
     bode = Assets.objects.all().filter(accion=1)
+    messages.error(request,"¡Asset eliminado correctamente!")
     return render(request,"proyectowebapp/bodega.html", {'bode': bode, "mensaje": 'OK'})
 
 def editarAsset(request, id):
     bodes = Assets.objects.filter(id=id).first()
     form = FormAssets(instance=bodes)
     return render(request, "proyectowebapp/editarAsset.html", {"form": form, 'bodes':bodes})
+
 def actualizarAsset(request, id):
     bodes = Assets.objects.get(id=id)
     form = FormAssets(request.POST, instance=bodes)
     if form.is_valid():
         form.save()
+        messages.error(request,"¡Asset actualizado correctamente!")
     bode = Assets.objects.all()
+
     return render(request, "proyectowebapp/bodega.html", {"bode": bode})
 
 class FormAssetsView(HttpRequest):

@@ -103,11 +103,14 @@
 
       <div class="card-body">
         <div class="table-responsive">
-          {% if mensaje %}
-          <div class="alert alert-success" role="alert">
-            Asset eliminado existosamente
-          </div>
-          {% endif %}
+           <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
+           {% if messages %}
+           {% for mensa in messages %}
+           <div class="alert alert-warning" role="alert">
+             {{mensa}}
+           </div>
+       {% endfor%}
+       {% endif %}
           <table class="display" id="example" width="100%">
             <thead>
               <tr>
