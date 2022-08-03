@@ -47,6 +47,13 @@ def editarAsset(request, id):
     bodes = Assets.objects.filter(id=id).first()
     form = FormAssets(instance=bodes)
     return render(request, "proyectowebapp/editarAsset.html", {"form": form, 'bodes':bodes})
+def actualizarAsset(request, id):
+    bodes = Assets.objects.get(id=id)
+    form = FormAssets(request.POST, instance=bodes)
+    if form.is_valid():
+        form.save()
+    bode = Assets.objects.all()
+    return render(request, "proyectowebapp/bodega.html", {"bode": bode})
 
 class FormAssetsView(HttpRequest):
 
@@ -61,8 +68,3 @@ class FormAssetsView(HttpRequest):
             assets = FormAssets()
         return render(request,"proyectowebapp/assetsindex.html", {"form": assets, "mensaje": 'OK'})
         
-
-
-
-
-# Create your views here.

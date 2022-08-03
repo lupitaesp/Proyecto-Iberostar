@@ -103,9 +103,9 @@
       </div>
       {% endif%}
 
-      <form action="#" method="POST">
+      <form action="{% url 'actualizarAsset' bodes.id %}" method="POST">
 
-        <h4>Actualización de Assets</h4>
+        <h4>Actualización de Asset</h4>
         {% csrf_token %}
         {% if mensaje %}
         <div class="alert alert-success" role="alert">

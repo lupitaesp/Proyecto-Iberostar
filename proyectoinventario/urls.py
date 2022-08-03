@@ -1,6 +1,6 @@
 from django.urls import path
 from proyectoinventario import views
-from .views import cerrar_sesion
+from .views import actualizarAsset, cerrar_sesion
 from .views import eliminarAssets
 from .views import editarAsset
 
@@ -15,5 +15,6 @@ urlpatterns = [
     path('cerrar_sesion',  cerrar_sesion, name='cerrar_sesion'), 
     path('eliminarAsset/<int:id>',  eliminarAssets, name='eliminarAsset'),
     path('editarAsset/<int:id>',  editarAsset, name='editarAsset'),
+    path('actualizarAsset/<int:id>',  actualizarAsset, name='actualizarAsset'),
 
 ] 

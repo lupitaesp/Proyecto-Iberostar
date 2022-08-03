@@ -100,13 +100,14 @@
         </div>
 
       </div>
-      {% if mensaje %}
-      <div class="alert alert-success" role="alert">
-        Asset eliminado existosamente
-      </div>
-      {% endif %}
+
       <div class="card-body">
         <div class="table-responsive">
+          {% if mensaje %}
+          <div class="alert alert-success" role="alert">
+            Asset eliminado existosamente
+          </div>
+          {% endif %}
           <table class="display" id="example" width="100%">
             <thead>
               <tr>
@@ -140,7 +141,7 @@
                 <td>
                   <a href="{% url 'eliminarAsset' c.id  %}" class="btn btn-danger btnEliminacion">Eliminar</a>
                 </td>
-               
+
               </tr>
               {% endfor %}
 
