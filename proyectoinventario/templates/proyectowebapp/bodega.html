@@ -98,19 +98,18 @@
           <a href="{% url 'registrarAsset' %}"><button type="button" class="btn btn-primary">AGREGAR</button></a>
 
         </div>
-
       </div>
 
       <div class="card-body">
         <div class="table-responsive">
-           <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
-           {% if messages %}
-           {% for mensa in messages %}
-           <div class="alert alert-warning" role="alert">
-             {{mensa}}
-           </div>
-       {% endfor%}
-       {% endif %}
+          <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
+          {% if messages %}
+          {% for mensa in messages %}
+          <div class="alert alert-warning" role="alert">
+            {{mensa}}
+          </div>
+          {% endfor%}
+          {% endif %}
           <table class="display" id="example" width="100%">
             <thead>
               <tr>

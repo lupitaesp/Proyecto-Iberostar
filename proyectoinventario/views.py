@@ -41,7 +41,7 @@ def eliminarAssets(request, id):
     bodes.delete()
     bode = Assets.objects.all().filter(accion=1)
     messages.error(request,"¡Asset eliminado correctamente!")
-    return render(request,"proyectowebapp/bodega.html", {'bode': bode, "mensaje": 'OK'})
+    return render(request,"proyectowebapp/bodega.html", {'bode': bode, "mensa": 'OK'})
 
 def editarAsset(request, id):
     bodes = Assets.objects.filter(id=id).first()
@@ -56,7 +56,7 @@ def actualizarAsset(request, id):
         messages.error(request,"¡Asset actualizado correctamente!")
     bode = Assets.objects.all()
 
-    return render(request, "proyectowebapp/bodega.html", {"bode": bode})
+    return render(request, "proyectowebapp/bodega.html", {"bode": bode, "mensa": 'OK'})
 
 class FormAssetsView(HttpRequest):
 
