@@ -98,18 +98,32 @@
           <a href="{% url 'registrarAsset' %}"><button type="button" class="btn btn-primary">AGREGAR</button></a>
 
         </div>
+
       </div>
 
       <div class="card-body">
         <div class="table-responsive">
-          <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
-          {% if messages %}
-          {% for mensa in messages %}
-          <div class="alert alert-warning" role="alert">
-            {{mensa}}
-          </div>
-          {% endfor%}
-          {% endif %}
+          {% block  js %}
+            <script>
+              function eliminarAsset(id){
+                Swal.fire({
+                  "title":"¿Estas seguro?",
+                  "text": "Esta accion no se puede desahacer",
+                  "icon" : "question",
+                  "showCancelButton": true,
+                  "confirmButtonColor": "red",
+                  "cancelButtonColor": "blue"
+                })
+                .then(function(result){
+                  if(result.isConfirmed){
+                    window.location.href = "/eliminarAsset/"+ id
+                  }
+                })
+               
+              }
+            </script>
+            
+          {% endblock %}
           <table class="display" id="example" width="100%">
             <thead>
               <tr>
@@ -141,20 +155,31 @@
                   <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btnActualizacion">Editar</a>
                 </td>
                 <td>
-                  <a href="{% url 'eliminarAsset' c.id  %}" class="btn btn-danger btnEliminacion">Eliminar</a>
-                </td>
-
+                  <button  onclick="eliminarAsset({{c.id}})" class="btn btn-danger btn-circle"><i class="fas fa-trash-alt"></i></button>
+                </td> 
               </tr>
               {% endfor %}
-
           </table>
           <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
           <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>         <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
+         {% if messages %}
+         {% for mensa in messages %}
+             <script>
+               Swal.fire({
+                 "title": "Accion Realizada",
+                 "text": "{{mensa}}",
+                 "icon":"success"  
+               })  
+           </script>
+             {% endfor%}
+         {% endif %}
           <script>
             $(document).ready(function () {
               $('#example').DataTable();
             });
           </script>
+          
 
         </div>
 
