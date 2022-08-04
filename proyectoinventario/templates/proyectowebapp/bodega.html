@@ -135,6 +135,8 @@
                 <th>Estado</th>
                 <th>Fecha</th>
                 <th>Cantidad</th>
+                <th>Año de Compra</th>
+                <th>Asignar</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
               </tr>
@@ -142,7 +144,6 @@
             <tbody>
               {% for c in bode %}
               <tr>
-
                 <td>{{c.serie}}</td>
                 <td>{{c.modelo}}</td>
                 <td>{{c.marca}}</td>
@@ -151,8 +152,12 @@
                 <td>{{c.estado}}</td>
                 <td>{{c.fecha}}</td>
                 <td>{{c.cantidad}}</td>
+                <td>{{c.fecha_compra}}</td>
                 <td>
-                  <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btnActualizacion">Editar</a>
+                  <a href="#" class="btn btn-success btn-circle"><i class="fas fa-user"></i></a>
+                </td>
+                <td>
+                  <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btn-circle"><i class="fas fa-edit"></i></a>
                 </td>
                 <td>
                   <button  onclick="eliminarAsset({{c.id}})" class="btn btn-danger btn-circle"><i class="fas fa-trash-alt"></i></button>

@@ -13,6 +13,16 @@ class Assets(models.Model):
     categoria=models.CharField(max_length=10)
     estado=models.CharField(max_length=10)
     fecha=models.DateTimeField(auto_now_add=True)
+    fecha_compra=models.DateField(auto_now=False, auto_now_add=False)
     accion=models.CharField(max_length=10)
 
+class Clientes(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre=models.CharField(max_length=60)
+    email=models.EmailField()
+    departamento=models.CharField(max_length=50)
+    hotel=models.CharField(max_length=50)
+    upated=models.DateTimeField(auto_now_add=True)
+    descripcion=models.CharField(max_length=50)
+    estado=models.CharField(max_length=50)
     
