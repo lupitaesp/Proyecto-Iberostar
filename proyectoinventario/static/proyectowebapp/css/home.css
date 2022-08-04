@@ -95,6 +95,7 @@ h5,
 h6 {
     margin-top: 0;
     margin-bottom: .5rem
+
 }
 
 p {
@@ -393,7 +394,9 @@ h5,
 h6 {
     margin-bottom: .5rem;
     font-weight: 400;
-    line-height: 1.2
+    line-height: 1.2;
+    text-align: center;
+    
 }
 
 .h1,
@@ -10448,6 +10451,7 @@ button.bg-dark:hover {
 
 .text-primary {
     color: #4e73df !important
+
 }
 
 a.text-primary:focus,

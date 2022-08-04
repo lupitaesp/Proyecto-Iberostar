@@ -17,9 +17,11 @@
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
   <!-- Custom styles for this template-->
   <link href="{%  static 'proyectowebapp/css/home.css' %}" rel="stylesheet">
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -48,14 +50,14 @@
       </a>
 
       <hr class="sidebar-divider my-0">
-      <!-- Nav Item - Profile -->
+      <!-- BARRA DE MENU -->
       <li class="nav-item active">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-user"></i>
           <span>{{ user.username }}</span></a>
       </li>
 
-      <!-- Nav Item - Dashboard -->
+
 
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'Home' %}">
@@ -70,8 +72,8 @@
           <span>BODEGA</span></a>
       </li>
 
-      <!-- Cerrar Sesion -->
-      <!-- Nav Item - Logout -->
+
+      <!-- CERRAR SESION -->
       <li class="nav-item active">
         {% if user.is_authenticated %}
         <a class="nav-link" href="{% url 'cerrar_sesion' %}">
@@ -81,37 +83,83 @@
           <i class="fas fa-fw fa-sign-out-alt"></i>
           <span>LOGOUT</span></a>
       </li>
-
-
-
-
-
     </ul>
 
 
-
-    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
-      <div id="content">
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-
-          <!-- Main Content Here -->
-
-          <!-- End of Main Content -->
-
+      <!-- REGISTRO DE DISPOSITIVOS -->
+      </br>
+      </br>
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">ASSETS ASIGNADOS</h6>
         </div>
-        <!-- End of Content Wrapper -->
-
-
 
       </div>
-      <!-- End of Page Wrapper -->
+
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="display" id="example" width="100%">
+            <thead>
+              <tr>
+                <th>Serie</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Tipo</th>
+                <th>Categoria</th>
+                <th>Estado</th>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Año de Compra</th>
+                <th>Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in bode %}
+              <tr>
+                <td>{{c.serie}}</td>
+                <td>{{c.modelo}}</td>
+                <td>{{c.marca}}</td>
+                <td>{{c.tipo}}</td>
+                <td>{{c.categoria}}</td>
+                <td>{{c.estado}}</td>
+                <td>{{c.fecha}}</td>
+                <td>{{c.cantidad}}</td>
+                <td>{{c.fecha_compra}}</td>
+                <td>
+                  <a href="#" class="btn btn-success btn-circle" title="Asignar"><i
+                      class="fas fa-user"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+          </table>
+          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+          <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
+          {% if messages %}
+          {% for mensa in messages %}
+          <script>
+            Swal.fire({
+              "title": "Accion Realizada",
+              "text": "{{mensa}}",
+              "icon": "success"
+            })  
+          </script>
+          {% endfor%}
+          {% endif %}
+          <script>
+            $(document).ready(function () {
+              $('#example').DataTable();
+            });
+          </script>
+
+
+        </div>
+
+      </div>
 </body>
 
 </html>

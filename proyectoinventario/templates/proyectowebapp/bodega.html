@@ -127,10 +127,10 @@
           <table class="display" id="example" width="100%">
             <thead>
               <tr>
-                <th>Serie</th>
-                <th>Modelo</th>
-                <th>Marca</th>
                 <th>Tipo</th>
+                <th>Modelo</th>
+                <th>Serie</th>
+                <th>Marca</th>
                 <th>Categoria</th>
                 <th>Estado</th>
                 <th>Fecha</th>
@@ -142,20 +142,19 @@
             <tbody>
               {% for c in bode %}
               <tr>
-                <td>{{c.serie}}</td>
-                <td>{{c.modelo}}</td>
-                <td>{{c.marca}}</td>
                 <td>{{c.tipo}}</td>
+                <td>{{c.modelo}}</td>
+                <td>{{c.serie}}</td>
+                <td>{{c.marca}}</td>
                 <td>{{c.categoria}}</td>
                 <td>{{c.estado}}</td>
                 <td>{{c.fecha}}</td>
                 <td>{{c.cantidad}}</td>
                 <td>{{c.fecha_compra}}</td>
                 <td>
-                  <a href="#" class="btn btn-success btn-circle" title="Asignar"><i
-                      class="fas fa-user"></i></a>
-                  <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btn-circle"><i
-                      class="fas fa-edit" title="Editar"></i></a>
+                  <a href="{% url 'registrarSalida' c.id  %}" class="btn btn-success btn-circle" title="Asignar"><i class="fas fa-user"></i></a>
+                  <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btn-circle"><i class="fas fa-edit"
+                      title="Editar"></i></a>
                   <button onclick="eliminarAsset({{c.id}})" class="btn btn-danger btn-circle"><i
                       class="fas fa-trash-alt" title="Eliminar"></i></button>
                 </td>
