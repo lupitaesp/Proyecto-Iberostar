@@ -32,6 +32,9 @@ def home(request):
     bode = Assets.objects.all().filter(accion=0)
     return render(request, "proyectowebapp/home.html", {'bode': bode})
 
+def historial(request):
+    cli = Clientes.objects.all()
+    return render(request, "proyectowebapp/historial.html",{'cli':cli})
 
 # Filtra en bodega todas las entradas.
 def bodega(request):
