@@ -13,7 +13,7 @@ class Assets(models.Model):
     categoria=models.CharField(max_length=10)
     estado=models.CharField(max_length=10)
     fecha=models.DateTimeField(auto_now_add=True)
-    fecha_compra=models.DateField(auto_now=False, auto_now_add=False)
+    año_compra=models.CharField(max_length=4)
     accion=models.CharField(max_length=10)
 
 class Clientes(models.Model):
