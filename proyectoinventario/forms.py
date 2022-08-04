@@ -13,7 +13,7 @@ class FormAssets(forms.ModelForm):
     marca = forms.CharField(
          required=True,
      )
-    año_compra = forms.IntegerField(
+    fecha_compra = forms.DateTimeField(
         required=True,
         
     )
@@ -43,7 +43,7 @@ class FormAssets(forms.ModelForm):
     
     class Meta:
         model= Assets
-        fields = ['modelo','serie','marca','cantidad','año_compra','tipo','categoria','estado','accion']
+        fields = ['modelo','serie','marca','cantidad','fecha_compra','tipo','categoria','estado','accion']
         wigets = {'fecha':forms.DateTimeInput(format='%d/%m/%Y', attrs={'type': 'datetime'})}
  
 

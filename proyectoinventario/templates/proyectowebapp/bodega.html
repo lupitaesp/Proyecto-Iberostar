@@ -103,26 +103,26 @@
 
       <div class="card-body">
         <div class="table-responsive">
-          {% block  js %}
-            <script>
-              function eliminarAsset(id){
-                Swal.fire({
-                  "title":"¿Estas seguro?",
-                  "text": "Esta accion no se puede desahacer",
-                  "icon" : "question",
-                  "showCancelButton": true,
-                  "confirmButtonColor": "red",
-                  "cancelButtonColor": "blue"
-                })
-                .then(function(result){
-                  if(result.isConfirmed){
-                    window.location.href = "/eliminarAsset/"+ id
+          {% block js %}
+          <script>
+            function eliminarAsset(id) {
+              Swal.fire({
+                "title": "¿Estas seguro?",
+                "text": "Esta accion no se puede desahacer",
+                "icon": "question",
+                "showCancelButton": true,
+                "confirmButtonColor": "red",
+                "cancelButtonColor": "blue"
+              })
+                .then(function (result) {
+                  if (result.isConfirmed) {
+                    window.location.href = "/eliminarAsset/" + id
                   }
                 })
-               
-              }
-            </script>
-            
+
+            }
+          </script>
+
           {% endblock %}
           <table class="display" id="example" width="100%">
             <thead>
@@ -136,9 +136,7 @@
                 <th>Fecha</th>
                 <th>Cantidad</th>
                 <th>Año de Compra</th>
-                <th>Asignar</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                <th>Accion</th>
               </tr>
             </thead>
             <tbody>
@@ -152,39 +150,39 @@
                 <td>{{c.estado}}</td>
                 <td>{{c.fecha}}</td>
                 <td>{{c.cantidad}}</td>
-                <td>{{c.año_compra}}</td>
+                <td>{{c.fecha_compra}}</td>
                 <td>
-                  <a href="#" class="btn btn-success btn-circle"><i class="fas fa-user"></i></a>
+                  <a href="#" class="btn btn-success btn-circle" title="Asignar"><i
+                      class="fas fa-user"></i></a>
+                  <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btn-circle"><i
+                      class="fas fa-edit" title="Editar"></i></a>
+                  <button onclick="eliminarAsset({{c.id}})" class="btn btn-danger btn-circle"><i
+                      class="fas fa-trash-alt" title="Eliminar"></i></button>
                 </td>
-                <td>
-                  <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btn-circle"><i class="fas fa-edit"></i></a>
-                </td>
-                <td>
-                  <button  onclick="eliminarAsset({{c.id}})" class="btn btn-danger btn-circle"><i class="fas fa-trash-alt"></i></button>
-                </td> 
               </tr>
               {% endfor %}
           </table>
           <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
           <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>         <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
-         {% if messages %}
-         {% for mensa in messages %}
-             <script>
-               Swal.fire({
-                 "title": "Accion Realizada",
-                 "text": "{{mensa}}",
-                 "icon":"success"  
-               })  
-           </script>
-             {% endfor%}
-         {% endif %}
+          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
+          {% if messages %}
+          {% for mensa in messages %}
+          <script>
+            Swal.fire({
+              "title": "Accion Realizada",
+              "text": "{{mensa}}",
+              "icon": "success"
+            })  
+          </script>
+          {% endfor%}
+          {% endif %}
           <script>
             $(document).ready(function () {
               $('#example').DataTable();
             });
           </script>
-          
+
 
         </div>
 
