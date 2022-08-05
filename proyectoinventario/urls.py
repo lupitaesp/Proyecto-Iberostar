@@ -15,10 +15,10 @@ urlpatterns = [
     path('registrarAsset/', views.FormAssetsView.inde, name='registrarAsset'),
     path('guardarAsset/',  views.FormAssetsView.procesar_formulario, name='guardarAsset'),
     path('cerrar_sesion',  cerrar_sesion, name='cerrar_sesion'), 
-    path('eliminarAsset/<int:id>',  eliminarAsset, name='eliminarAsset'),
-    path('editarAsset/<int:id>',  editarAsset, name='editarAsset'),
-    path('actualizarAsset/<int:id>',  actualizarAsset, name='actualizarAsset'),
-    path('registrarSalida/<int:id>', views.FormAssetsSalidas.registrarSalida, name='registrarSalida'),
+    path('eliminarAsset/<int:id_asset>',  eliminarAsset, name='eliminarAsset'),
+    path('editarAsset/<int:id_asset>',  editarAsset, name='editarAsset'),
+    path('actualizarAsset/<int:id_asset>',  actualizarAsset, name='actualizarAsset'),
+    path('registrarSalida/<int:id_asset>', views.FormAssetsSalidas.registrarSalida, name='registrarSalida'),
     path('guardarSalida/',  views.FormAssetsSalidas.procesarSalida, name='guardarSalida'),
 
 ] 

@@ -103,13 +103,13 @@
       </div>
       {% endif%}
 
-      <form action="{% url 'actualizarAsset' bodes.id_asset %}" method="POST">
+      <form action="{% url 'guardarAsset' %}" method="POST">
 
-        <h4>Actualización de Asset</h4>
+        <h4>Registro de Assets</h4>
         {% csrf_token %}
         {% if mensaje %}
         <div class="alert alert-success" role="alert">
-          Asset actualizado existosamente
+          Asset registrado existosamente
         </div>
         {% endif %}
         {{ form | crispy }}

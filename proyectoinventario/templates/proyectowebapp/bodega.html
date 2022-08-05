@@ -152,10 +152,10 @@
                 <td>{{c.cantidad}}</td>
                 <td>{{c.fecha_compra}}</td>
                 <td>
-                  <a href="{% url 'registrarSalida' c.id  %}" class="btn btn-success btn-circle" title="Asignar"><i class="fas fa-user"></i></a>
-                  <a href="{% url 'editarAsset' c.id  %}" class="btn btn-warning btn-circle"><i class="fas fa-edit"
+                  <a href="{% url 'registrarSalida' c.id_asset  %}" class="btn btn-success btn-circle" title="Asignar"><i class="fas fa-user"></i></a>
+                  <a href="{% url 'editarAsset' c.id_asset  %}" class="btn btn-warning btn-circle"><i class="fas fa-edit"
                       title="Editar"></i></a>
-                  <button onclick="eliminarAsset({{c.id}})" class="btn btn-danger btn-circle"><i
+                  <button onclick="eliminarAsset({{c.id_asset}})" class="btn btn-danger btn-circle"><i
                       class="fas fa-trash-alt" title="Eliminar"></i></button>
                 </td>
               </tr>

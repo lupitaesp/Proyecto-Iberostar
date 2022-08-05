@@ -47,22 +47,22 @@ def cerrar_sesion(request):
     return redirect('Login')
 
 
-def eliminarAsset(request, id):
-    bodes = Assets.objects.get(id=id)
+def eliminarAsset(request, id_asset):
+    bodes = Assets.objects.get(id_asset=id_asset)
     bodes.delete()
     bode = Assets.objects.all().filter(accion=1)
     messages.error(request, "¡Asset eliminado correctamente!")
     return render(request, "proyectowebapp/bodega.html", {'bode': bode, "mensa": 'OK'})
 
 
-def editarAsset(request, id):
-    bodes = Assets.objects.filter(id=id).first()
+def editarAsset(request, id_asset):
+    bodes = Assets.objects.filter(id_asset=id_asset).first()
     form = FormAssets(instance=bodes)
     return render(request, "proyectowebapp/editarAsset.html", {"form": form, 'bodes': bodes})
 
 
-def actualizarAsset(request, id):
-    bodes = Assets.objects.get(id=id)
+def actualizarAsset(request, id_asset):
+    bodes = Assets.objects.get(id_asset=id_asset)
     form = FormAssets(request.POST, instance=bodes)
     if form.is_valid():
         form.save()
@@ -88,7 +88,7 @@ class FormAssetsView(HttpRequest):
 
 class FormAssetsSalidas(HttpRequest):
 # Metodo para registrar lo del formulario
-    def registrarSalida(request, id):
+    def registrarSalida(request, id_asset):
         cliente = FormSalidas()
         return render(request, "proyectowebapp/assetSalidaForm.html", {"form": cliente })
 # Guardar el formulario
