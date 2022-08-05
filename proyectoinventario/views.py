@@ -24,10 +24,6 @@ def logi(request):
     form = AuthenticationForm()
     return render(request, "proyectowebapp/index.html", {"form": form})
 
-
-
-
-
 def home(request):
     bode = Assets.objects.all().filter(accion=0)
     return render(request, "proyectowebapp/home.html", {'bode': bode})
