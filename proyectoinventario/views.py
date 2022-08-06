@@ -1,3 +1,4 @@
+from xml.dom import INVALID_STATE_ERR
 from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from proyectoinventario.forms import FormAssets, FormSalidas
@@ -82,16 +83,25 @@ class FormAssetsView(HttpRequest):
         return render(request, "proyectowebapp/assetsindex.html", {"form": assets, "mensaje": 'OK'})
 
 
+
 class FormAssetsSalidas(HttpRequest):
 # Metodo para registrar lo del formulario
+
     def registrarSalida(request, id_asset):
-        cliente = FormSalidas()
-        return render(request, "proyectowebapp/assetSalidaForm.html", {"form": cliente })
+        dispo = Assets.objects.filter(id_asset=id_asset).first()
+        form = FormSalidas(instance=dispo)
+        return render(request, "proyectowebapp/assetSalidaForm.html", {"form": form, 'dispo': dispo })
 # Guardar el formulario
-    def procesarSalida(request):
-        clientes = FormSalidas(request.POST)
-        if clientes.is_valid():
-            clientes.save()
-            messages.error(request, "¡Usuario asignado correctamente!")
-        cli = Clientes.objects.all()
-        return render(request, "proyectowebapp/home.html", {"form": cli, "mensaje": 'OK'})
+    def procesarSalida(request, id_asset):
+        # ALMACENAMONS EL ID QUE SE OBTIENE DEL POST EN UNA VARIABLE PARA QUE CREE EN LA BASE DE DATOS 
+        dispo = Assets.objects.get(id_asset=id_asset)
+        nombre=request.POST['nombre']
+        email=request.POST['email']
+        departamento=request.POST['departamento']
+        hotel=request.POST['hotel']
+        estado=request.POST['estado']
+        descripcion=request.POST['descripcion']
+        clientes = Clientes.objects.create(asset=dispo,nombre=nombre,email=email,departamento=departamento,hotel=hotel,estado=estado,descripcion=descripcion)
+        clientes.save()
+        messages.error(request, "¡Usuario asignado correctamente!")
+        return render(request, "proyectowebapp/home.html", {"form": clientes, "mensaje": 'OK'})

@@ -103,7 +103,7 @@
       </div>
       {% endif%}
 
-      <form action="{% url 'guardarSalida' %}" method="POST">
+      <form action="{% url 'guardarSalida' dispo.id_asset %}" method="POST">
 
         <h4>Actualización de Asset</h4>
         {% csrf_token %}

@@ -19,6 +19,6 @@ urlpatterns = [
     path('editarAsset/<int:id_asset>',  editarAsset, name='editarAsset'),
     path('actualizarAsset/<int:id_asset>',  actualizarAsset, name='actualizarAsset'),
     path('registrarSalida/<int:id_asset>', views.FormAssetsSalidas.registrarSalida, name='registrarSalida'),
-    path('guardarSalida/',  views.FormAssetsSalidas.procesarSalida, name='guardarSalida'),
+    path('guardarSalida/<int:id_asset>',  views.FormAssetsSalidas.procesarSalida, name='guardarSalida'),
 
 ] 

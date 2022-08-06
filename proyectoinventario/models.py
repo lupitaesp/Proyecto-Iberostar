@@ -17,7 +17,7 @@ class Assets(models.Model):
     accion=models.CharField(max_length=10)
 
 class Clientes(models.Model):
-    id_clientes = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     nombre=models.CharField(max_length=60)
     email=models.EmailField()
     departamento=models.CharField(max_length=50)
@@ -25,4 +25,4 @@ class Clientes(models.Model):
     upated=models.DateTimeField(auto_now_add=True)
     descripcion=models.CharField(max_length=50)
     estado=models.CharField(max_length=50)
-    
+    asset=models.ForeignKey(Assets, null=False, on_delete=models.CASCADE)
