@@ -132,6 +132,8 @@
                 <td>
                   <a href="#" class="btn btn-success btn-circle" title="Asignar"><i class="fas fa-user"></i></a>
                   <a href="{% url 'Historial' c.id_asset%}" class="btn btn-info btn-circle" title="Historial"><i class="fas fa-clock"></i></a>
+                  <a href="{% url 'regresarBodega' c.id_asset%}" class="btn btn-primary btn-circle" title="Bodega"><i class="fas fa-archive"></i></a>
+
                 </td>
               </tr>
               {% endfor %}

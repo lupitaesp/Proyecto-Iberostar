@@ -30,6 +30,11 @@ def home(request):
     bode = Assets.objects.all().filter(accion=0)
     return render(request, "proyectowebapp/home.html", {'bode': bode})
 
+def regresarBodega(request, id_asset):
+    Assets.objects.filter(id_asset=id_asset).update(accion=1)
+    messages.error(request, "¡El asset se regreso a Bodega!")
+    bode = Assets.objects.all().filter(accion=0)
+    return render(request, "proyectowebapp/home.html", {'bode': bode, "mensaje": 'OK'})
 
 def historial(request, id_asset):
     bodega = Assets.objects.get(id_asset=id_asset)
@@ -112,4 +117,5 @@ class FormAssetsSalidas(HttpRequest):
         Assets.objects.filter(id_asset=id_asset).update(accion=0)
         clientes.save()
         messages.error(request, "¡Usuario asignado correctamente!")
-        return render(request, "proyectowebapp/home.html", {"form": clientes, "mensaje": 'OK'})
+        bode = Assets.objects.all().filter(accion=1)
+        return render(request, "proyectowebapp/bodega.html", {"bode": bode, "mensaje": 'OK'})
