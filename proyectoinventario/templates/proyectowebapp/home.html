@@ -131,7 +131,7 @@
                 <td>{{c.fecha_compra}}</td>
                 <td>
                   <a href="#" class="btn btn-success btn-circle" title="Asignar"><i class="fas fa-user"></i></a>
-                  <a href="{% url 'Historial' %}" class="btn btn-info btn-circle" title="Historial"><i class="fas fa-clock"></i></a>
+                  <a href="{% url 'Historial' c.id_asset%}" class="btn btn-info btn-circle" title="Historial"><i class="fas fa-clock"></i></a>
                 </td>
               </tr>
               {% endfor %}
