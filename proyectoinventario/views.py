@@ -25,15 +25,19 @@ def logi(request):
     form = AuthenticationForm()
     return render(request, "proyectowebapp/index.html", {"form": form})
 
+
 def home(request):
     bode = Assets.objects.all().filter(accion=0)
     return render(request, "proyectowebapp/home.html", {'bode': bode})
 
+
 def historial(request):
     cli = Clientes.objects.all()
-    return render(request, "proyectowebapp/historial.html",{'cli':cli})
+    return render(request, "proyectowebapp/historial.html", {'cli': cli})
 
 # Filtra en bodega todas las entradas.
+
+
 def bodega(request):
     bode = Assets.objects.all().filter(accion=1)
     return render(request, "proyectowebapp/bodega.html", {'bode': bode})
@@ -83,25 +87,28 @@ class FormAssetsView(HttpRequest):
         return render(request, "proyectowebapp/assetsindex.html", {"form": assets, "mensaje": 'OK'})
 
 
-
 class FormAssetsSalidas(HttpRequest):
-# Metodo para registrar lo del formulario
+    # Metodo para registrar lo del formulario
 
     def registrarSalida(request, id_asset):
+        # PASAMOS POR METODO POST EL ID PARA ALMACENARLO EN UNA VARIABLE
         dispo = Assets.objects.filter(id_asset=id_asset).first()
         form = FormSalidas(instance=dispo)
-        return render(request, "proyectowebapp/assetSalidaForm.html", {"form": form, 'dispo': dispo })
-# Guardar el formulario
+        return render(request, "proyectowebapp/assetSalidaForm.html", {"form": form, 'dispo': dispo})
+    # Guardar el formulario
+
     def procesarSalida(request, id_asset):
-        # ALMACENAMONS EL ID QUE SE OBTIENE DEL POST EN UNA VARIABLE PARA QUE CREE EN LA BASE DE DATOS 
+        # ALMACENAMONS EL ID QUE SE OBTIENE DEL POST EN UNA VARIABLE PARA QUE CREE EN LA BASE DE DATOS
         dispo = Assets.objects.get(id_asset=id_asset)
-        nombre=request.POST['nombre']
-        email=request.POST['email']
-        departamento=request.POST['departamento']
-        hotel=request.POST['hotel']
-        estado=request.POST['estado']
-        descripcion=request.POST['descripcion']
-        clientes = Clientes.objects.create(asset=dispo,nombre=nombre,email=email,departamento=departamento,hotel=hotel,estado=estado,descripcion=descripcion)
+        nombre = request.POST['nombre']
+        email = request.POST['email']
+        departamento = request.POST['departamento']
+        hotel = request.POST['hotel']
+        estado = request.POST['estado']
+        descripcion = request.POST['descripcion']
+        clientes = Clientes.objects.create(asset=dispo, nombre=nombre, email=email,
+                                           departamento=departamento, hotel=hotel, estado=estado, descripcion=descripcion)
+        Assets.objects.filter(id_asset=id_asset).update(accion=0)
         clientes.save()
         messages.error(request, "¡Usuario asignado correctamente!")
         return render(request, "proyectowebapp/home.html", {"form": clientes, "mensaje": 'OK'})
