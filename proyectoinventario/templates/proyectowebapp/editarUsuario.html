@@ -17,11 +17,11 @@
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <!-- Custom styles for this template-->
   <link href="{%  static 'proyectowebapp/css/home.css' %}" rel="stylesheet">
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
 </head>
 
@@ -50,14 +50,14 @@
       </a>
 
       <hr class="sidebar-divider my-0">
-      <!-- BARRA DE MENU -->
+      <!-- Nav Item - Profile -->
       <li class="nav-item active">
         <a class="nav-link" href="#">
           <i class="fas fa-fw fa-user"></i>
           <span>{{ user.username }}</span></a>
       </li>
 
-
+      <!-- Nav Item - Dashboard -->
 
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'Home' %}">
@@ -72,8 +72,8 @@
           <span>BODEGA</span></a>
       </li>
 
-
-      <!-- CERRAR SESION -->
+      <!-- Cerrar Sesion -->
+      <!-- Nav Item - Logout -->
       <li class="nav-item active">
         {% if user.is_authenticated %}
         <a class="nav-link" href="{% url 'cerrar_sesion' %}">
@@ -83,55 +83,45 @@
           <i class="fas fa-fw fa-sign-out-alt"></i>
           <span>LOGOUT</span></a>
       </li>
+
+
+
+
+
     </ul>
 
-
-    <div id="content-wrapper" class="d-flex flex-column">
-
-
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="display" id="example" width="100%">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Departamento</th>
-                <th>Hotel</th>
-                <th>Fecha</th>
-                <th>Descripcion</th>
-                <th>Accion</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for p in cli %}
-              <tr>
-                <td>{{p.nombre}}</td>
-                <td>{{p.email}}</td>
-                <td>{{p.departamento}}</td>
-                <td>{{p.hotel}}</td>
-                <td>{{p.upated}}</td>
-                <td>{{p.descripcion}}</td>
-                <td><a href="{% url 'editarUsuario' p.id  %}" class="btn btn-warning btn-circle" title="Editar"><i class="fas fa-edit"></i>
-                </td>
-              </tr>
-              {% endfor %}
-          </table>
-          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-          <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-          <!-- HACER IF PARA QUE MUESTRE DIFERENTES MENSAJES  -->
-
-          <script>
-            $(document).ready(function () {
-              $('#example').DataTable();
-            });
-          </script>
+    <!-- End of Sidebar -->
+    {% block content %}
+    {% load crispy_forms_tags %}
 
 
-        </div>
 
+    <div class="container">
+      {% if form.errors %}
+      <div class="alert alert-danger" role="alert">
+        Este es un mensaje de alerta!
       </div>
+      {% endif%}
+
+      <form action="{% url 'actualizarHistorial' dispo.id %}" method="POST">
+
+        <h4>Edicion de Usuario</h4>
+        {% csrf_token %}
+        {% if mensaje %}
+        <div class="alert alert-success" role="alert">
+          Usuario Asignado
+        </div>
+        {% endif %}
+        {{ form | crispy }}
+        <div class="col">
+          <button type="submit" class="btn btn-primary center-block">Guardar</button>
+          <a href="{% url 'Home' %}"><button type="button" class="btn btn-danger">Cancelar</button></a>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+
 </body>
 
 </html>
