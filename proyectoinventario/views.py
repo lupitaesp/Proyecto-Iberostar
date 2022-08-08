@@ -117,8 +117,8 @@ class FormAssetsSalidas(HttpRequest):
         Assets.objects.filter(id_asset=id_asset).update(accion=0)
         clientes.save()
         messages.error(request, "¡Usuario asignado correctamente!")
-        bode = Assets.objects.all().filter(accion=1)
-        return render(request, "proyectowebapp/bodega.html", {"bode": bode, "mensaje": 'OK'})
+        bode = Assets.objects.all().filter(accion=0)
+        return render(request, "proyectowebapp/home.html", {"bode": bode, "mensaje": 'OK'})
 
 def editarUsuario(request, id_asset):
     dispo = Clientes.objects.filter(id=id_asset).first()
