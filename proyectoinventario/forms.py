@@ -1,9 +1,12 @@
 from dataclasses import fields
 from pyexpat import model
 from django import forms
-from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget, AdminSplitDateTime
 from proyectoinventario.models import Assets, Clientes
-from crispy_forms.helper import FormHelper
+from bootstrap_datepicker_plus.widgets import DatePickerInput
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class FormAssets(forms.ModelForm):
@@ -16,8 +19,8 @@ class FormAssets(forms.ModelForm):
     marca = forms.CharField(
         required=True,
     )
-    fecha_compra = forms.DateTimeField(
-        required=True,
+    fecha_compra = forms.DateField(
+        widget=DateInput
     )
 
     cantidad = forms.IntegerField(
